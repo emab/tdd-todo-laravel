@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Todo - '.$task->id)
 @section('content')
 	<div class="container">
 		<div class="row justify-content-center">
@@ -9,6 +10,18 @@
 				<div class="card">
 					<div class="card-header">{{$task->title}}</div>
 					<div class="card-body">{{$task->description}}</div>
+					<div class="card-footer">
+					@can('update', $task)
+						<a href="/tasks/{{$task->id}}/edit" class="btn btn-primary">Edit</a>
+					@endcan
+					@can('delete', $task)
+						<form class="float-right" method="POST" action="/tasks/{{$task->id}}">
+							{{csrf_field()}}
+							{{method_field('DELETE')}}
+							<button class="btn btn-danger" type="submit">Delete</button>
+						</form>
+					@endcan
+					</div>
 				</div>
 			</div>
 		</div>

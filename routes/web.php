@@ -16,7 +16,15 @@ Route::get('/', function () {
 });
 
 Route::get('/tasks', 'TaskController@index');
+
+Route::get('/tasks/create', 'TaskController@create');
+Route::post('/tasks/create', 'TaskController@store');
+
 Route::get('/tasks/{task}', 'TaskController@show');
+Route::put('/tasks/{task}', 'TaskController@update');
+Route::delete('/tasks/{task}', 'TaskController@destroy');
+
+Route::get('/tasks/{task}/edit', 'TaskController@edit');
 
 Auth::routes();
 

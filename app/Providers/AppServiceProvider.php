@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $policies = [
+            'App\Task' => 'App\Policies\TaskPolicy',
+    ];
     /**
      * Register any application services.
      *
